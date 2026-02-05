@@ -21,8 +21,13 @@ app.get('/users', (req,res)=>{
     res.send(users)
 })
 
-app.post('/users',(req,res)=>{
-    console.log('post method hit')
+app.post('/users', (req,res)=>{
+    console.log('post method hit', req.body)
+    const newUser = req.body
+    newUser.id = users.length+1
+    users.push(newUser)
+    res.send(newUser)
+
 })
 
 app.listen(port, ()=>{
